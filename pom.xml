@@ -13,6 +13,7 @@
         <module>aws-post-product</module>
         <module>model</module>
         <module>aws-get-product</module>
+        <module>aws-delete-product</module>
     </modules>
 
     <properties>
