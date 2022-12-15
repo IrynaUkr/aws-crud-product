@@ -1,4 +1,4 @@
-package org.example.model;
+package crud.lambda.api.model;
 
 import com.google.gson.Gson;
 

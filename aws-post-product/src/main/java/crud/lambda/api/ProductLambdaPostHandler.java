@@ -1,4 +1,4 @@
-package org.example;
+package crud.lambda.api;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -7,14 +7,14 @@ import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import org.example.model.Product;
+import crud.lambda.api.model.Product;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 
 
-public class ProductLambdaPutHandler implements RequestStreamHandler {
+public class ProductLambdaPostHandler implements RequestStreamHandler {
 
     private static final String DYNAMO_TABLE = "Products";
 
@@ -47,10 +47,9 @@ public class ProductLambdaPutHandler implements RequestStreamHandler {
                     responseObject.put("statusCode", 200);
                     responseObject.put("body", responseBody.toString());
                 } else {
-                   //
+                    responseObject.put("statusCode", 400);
                 }
             }
-
 
         } catch (Exception e) {
             responseObject.put("statusCode", 400);
@@ -61,5 +60,5 @@ public class ProductLambdaPutHandler implements RequestStreamHandler {
         reader.close();
         writer.close();
     }
-}
 
+}
